@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRON FEW</title>
+    <meta name="description" content="Fuerza a través de la autenticidad urbana. Iron Few es un movimiento.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/logoblnacoreondo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="loading">
+    <!-- Preloader iron few -->
+    <div id="preloader">
+        <div class="loader-content">
+            <video id="loader-video" autoplay muted loop playsinline>
+                <source src="imagenes/Video Project.mp4" type="video/mp4">
+            </video>
+            <h1 class="loader-text">IRON FEW</h1>
+            <div class="loader-bar-container">
+                <div id="loader-bar"></div>
+            </div>
+            <div id="loader-percentage">0%</div>
+        </div>
+    </div>
+
+    <!-- Background textures and shapes removed -->
+
+    <!-- Puesto Superior: Fixed Horizontal Header -->
+    <header class="top-header">
+        <div class="header-container">
+            <nav class="main-nav left-nav">
+                <ul>
+                    <li><a href="#nosotros" class="nav-link" data-section="nosotros">Nosotros</a></li>
+                    <li><a href="#contacto" class="nav-link" data-section="contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="#hero" class="logo-link"><img src="imagenes/iron few hori png.png" alt="IRON FEW"
+                    class="top-logo"></a>
+            <nav class="main-nav right-nav">
+                <ul>
+                    <li><a href="#coleccion" class="nav-link" data-section="coleccion">Colección</a></li>
+                    <li><a href="#accesorios" class="nav-link" data-section="accesorios">Accesorios</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Section 1: Hero -->
+        <section id="hero" class="section hero-section" data-section="hero">
+            <div class="hero-composition">
+                <!-- Gym silhouette background -->
+                <div class="gym-silhouette"></div>
+
+                <!-- Example Images overlay -->
+                <div class="hero-examples-container">
+                    <img src="imagenes/ejemplo1.png" class="hero-example-img" alt="Ejemplo 1">
+                    <img src="imagenes/ejemplo2.png" class="hero-example-img" alt="Ejemplo 2">
+                    <img src="imagenes/ejemplo3.png" class="hero-example-img" alt="Ejemplo 3">
+                    <img src="imagenes/ejemplo4.png" class="hero-example-img" alt="Ejemplo 4">
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Section 2: Nosotros -->
+        <section id="nosotros" class="section nosotros-section" data-section="nosotros">
+            <div class="nosotros-split-container">
+                <div class="nosotros-left">
+                    <div class="nosotros-description-wrapper">
+                        <p class="nosotros-brand-text">
+                            El hierro no solo se levanta, se lleva en la mentalidad. Iron Few nace para dar voz a
+                            quienes se forjan en el silencio del gimnasio. Nuestra misión es
+                            simple: crear equipo de alto rendimiento que combine una estética urbana sofisticada con la
+                            funcionalidad técnica necesaria para romper tus propios récords.
+                            <br> <strong>Muchos lo intentan, POCOS PERMANECEN.</strong>
+                        </p>
+                    </div>
+                    <img src="imagenes/nosotros text.png" alt="Nosotros Texto" class="nosotros-responsive-image">
+                    <div class="nosotros-icons">
+                        <i class="fa-solid fa-link icon-grunge"></i>
+                        <i class="fa-solid fa-dumbbell icon-grunge"></i>
+                    </div>
+                </div>
+                <div class="nosotros-right">
+                    <img src="imagenes/nosotros jaguar.png" alt="Espíritu Iron Few" class="nosotros-image">
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Section 3: Colección -->
+        <section id="coleccion" class="section coleccion-section" data-section="coleccion">
+            <h2 class="carousel-section-title">COLECCIÓN</h2>
+            <!-- Infinite Carousel -->
+            <div class="carousel-container">
+                <button class="carousel-arrow left" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Product 1 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/tanktop.png" alt="IRON FEW HOODIE" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">IRON FEW HOODIE</h3>
+                            </div>
+                        </div>
+                        <!-- Product 2 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/celeste.png" alt="ULTRA CELESTE" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">ULTRA CELESTE</h3>
+                            </div>
+                        </div>
+                        <!-- Product 3 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/2.png" alt="IRON FEW JOGGERS" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">IRON FEW JOGGERS</h3>
+                            </div>
+                        </div>
+                        <!-- Product 4 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/morada.png" alt="PURPLE VIBE" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">PURPLE VIBE</h3>
+                            </div>
+                        </div>
+                        <!-- Product 5 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/3.png" alt="GRAPHIC TEES" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">GRAPHIC TEES</h3>
+                            </div>
+                        </div>
+                        <!-- Product 6 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/negro.png" alt="DARK CORE" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">DARK CORE</h3>
+                            </div>
+                        </div>
+                        <!-- Product 7 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/ejemplo.png" alt="IRON FEW HOODIE" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">CASUAL T-SHIRT</h3>
+                            </div>
+                        </div>
+                        <!-- Product 8 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/ejemplo5.png" alt="IRON FEW HOODIE" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">BUZO IRON</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-arrow right" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Section 4: Accesorios -->
+        <section id="accesorios" class="section accesorios-section" data-section="accesorios">
+            <h2 class="carousel-section-title">ACCESORIOS</h2>
+
+            <div class="carousel-container">
+                <button class="carousel-arrow left" id="accPrevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="accTrack">
+                        <!-- Acc 1 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/bolso if.png" alt="IRON CROSSBODY" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">IRON CROSSBODY</h3>
+                            </div>
+                        </div>
+                        <!-- Acc 2 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/cangurera.png" alt="WAIST PACK" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">WAIST PACK</h3>
+                            </div>
+                        </div>
+                        <!-- Acc 3 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/cinturon if.png" alt="PREMIUM BELT" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">PREMIUM BELT</h3>
+                            </div>
+                        </div>
+                        <!-- Acc 4 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/gorra.png" alt="URBAN CAP" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">URBAN CAP</h3>
+                            </div>
+                        </div>
+                        <!-- Acc 5 -->
+                        <div class="product-card carousel-item">
+                            <div class="img-container">
+                                <img src="imagenes/termo.png" alt="STEEL BOTTLE" class="product-img">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">STEEL BOTTLE</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-arrow right" id="accNextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Section 5: Contacto -->
+        <section id="contacto" class="section contacto-section" data-section="contacto">
+            <div class="contacto-wrapper">
+                <div class="contacto-header">
+                    <h2 class="contacto-title">ÚNETE A LOS POCOS.<br>CONECTA CON NOSOTROS.</h2>
+                    <p class="contacto-description">
+                        No enviamos correos. Preferimos la acción directa. Para consultas rápidas, pedidos o soporte,
+                        encuéntranos en nuestros canales oficiales.
+                    </p>
+                </div>
+
+                <div class="catalogo-cta">
+                    <h3 class="catalogo-subtitle">¿LISTO PARA VER EL EQUIPO?</h3>
+                    <a href="#" class="catalogo-btn">OBTENER CATÁLOGO IRON FEW</a>
+                </div>
+
+                <div class="contacto-social">
+                    <div class="social-icons-row">
+                        <a href="#" class="social-icon" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <img src="imagenes/sin fondo.png" alt="Iron Few" class="footer-logo">
+            <p class="footer-legal">© IRON FEW. ESTOS MATERIALES ESTÁN DISEÑADOS PARA USO INFORMATIVO Y NO
+                COMERCIAL. TODOS LOS DERECHOS RESERVADOS.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

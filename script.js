@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
 
     if (preloader) {
+        const loaderVideo = document.getElementById('loader-video');
+        
+        // Ensure video plays (crucial for some mobile browsers)
+        if (loaderVideo) {
+            loaderVideo.play().catch(error => {
+                console.log("Autoplay was prevented. Waiting for interaction or browser policy change.");
+            });
+        }
+
         let progress = 0;
         const interval = setInterval(() => {
             // Simulated loading progress
@@ -241,3 +250,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initCarousel('carouselTrack', 'prevBtn', 'nextBtn'); // Colección
     initCarousel('accTrack', 'accPrevBtn', 'accNextBtn'); // Accesorios
 });
+

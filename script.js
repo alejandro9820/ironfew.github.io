@@ -16,23 +16,41 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Ensure jaguar video plays
         if (loaderJaguar) {
+            // Force attributes for mobile compatibility
             loaderJaguar.muted = true;
-            loaderJaguar.playsInline = true;
+            loaderJaguar.defaultMuted = true;
+            loaderJaguar.setAttribute('muted', '');
             loaderJaguar.setAttribute('playsinline', '');
             loaderJaguar.setAttribute('webkit-playsinline', '');
 
             const startJaguarVideo = () => {
                 const playPromise = loaderJaguar.play();
                 if (playPromise !== undefined) {
-                    playPromise.catch(() => {
-                        document.addEventListener('click', () => loaderJaguar.play(), { once: true });
-                        document.addEventListener('touchstart', () => loaderJaguar.play(), { once: true });
+                    playPromise.catch(error => {
+                        console.log("Autoplay blocked, waiting for interaction");
+                        // Fallback logic for when autoplay is blocked
+                        const playOnAction = () => {
+                            loaderJaguar.play().then(() => {
+                                document.removeEventListener('touchstart', playOnAction);
+                                document.removeEventListener('click', playOnAction);
+                                document.removeEventListener('keydown', playOnAction);
+                            }).catch(e => console.log("Still can't play:", e));
+                        };
+                        document.addEventListener('touchstart', playOnAction);
+                        document.addEventListener('click', playOnAction);
+                        document.addEventListener('keydown', playOnAction);
                     });
                 }
             };
 
-            if (loaderJaguar.readyState >= 1) startJaguarVideo();
-            else loaderJaguar.addEventListener('loadedmetadata', startJaguarVideo);
+            // Attempt to play immediately and on various loading stages
+            startJaguarVideo();
+            loaderJaguar.addEventListener('loadedmetadata', startJaguarVideo);
+            loaderJaguar.addEventListener('canplay', startJaguarVideo);
+            
+            // Extra safety: try playing when the preloader is shown
+            setTimeout(startJaguarVideo, 100);
+            setTimeout(startJaguarVideo, 500);
         }
 
         let progress = 0;

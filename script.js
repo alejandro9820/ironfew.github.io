@@ -1,18 +1,45 @@
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 document.addEventListener('DOMContentLoaded', () => {
     // 0. Preloader Logic
     const preloader = document.getElementById('preloader');
     const loaderBar = document.getElementById('loader-bar');
     const loaderPercentage = document.getElementById('loader-percentage');
     const body = document.body;
+    const html = document.documentElement;
 
     if (preloader) {
         const loaderVideo = document.getElementById('loader-video');
         
         // Ensure video plays (crucial for some mobile browsers)
         if (loaderVideo) {
-            loaderVideo.play().catch(error => {
-                console.log("Autoplay was prevented. Waiting for interaction or browser policy change.");
-            });
+            // Ensure properties are set for autoplay on mobile
+            loaderVideo.muted = true;
+            loaderVideo.playsInline = true;
+            loaderVideo.setAttribute('playsinline', '');
+            loaderVideo.setAttribute('webkit-playsinline', '');
+            
+            const startVideo = () => {
+                const playPromise = loaderVideo.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Autoplay prevented, trying to play on first interaction.");
+                        // Fallback: try to play on first user interaction if blocked
+                        document.addEventListener('click', () => loaderVideo.play(), { once: true });
+                        document.addEventListener('touchstart', () => loaderVideo.play(), { once: true });
+                    });
+                }
+            };
+
+            // If metadata is already loaded, try to play
+            if (loaderVideo.readyState >= 1) {
+                startVideo();
+            } else {
+                loaderVideo.addEventListener('loadedmetadata', startVideo);
+            }
         }
 
         let progress = 0;
@@ -28,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     preloader.classList.add('fade-out');
                     body.classList.remove('loading');
+                    html.classList.remove('loading');
                 }, 500);
             }
             
@@ -250,4 +278,3 @@ document.addEventListener('DOMContentLoaded', () => {
     initCarousel('carouselTrack', 'prevBtn', 'nextBtn'); // Colección
     initCarousel('accTrack', 'accPrevBtn', 'accNextBtn'); // Accesorios
 });
-

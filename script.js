@@ -6,40 +6,33 @@ window.scrollTo(0, 0);
 document.addEventListener('DOMContentLoaded', () => {
     // 0. Preloader Logic
     const preloader = document.getElementById('preloader');
+    const loaderJaguar = document.getElementById('loader-jaguar-video');
     const loaderBar = document.getElementById('loader-bar');
     const loaderPercentage = document.getElementById('loader-percentage');
     const body = document.body;
     const html = document.documentElement;
 
     if (preloader) {
-        const loaderVideo = document.getElementById('loader-video');
         
-        // Ensure video plays (crucial for some mobile browsers)
-        if (loaderVideo) {
-            // Ensure properties are set for autoplay on mobile
-            loaderVideo.muted = true;
-            loaderVideo.playsInline = true;
-            loaderVideo.setAttribute('playsinline', '');
-            loaderVideo.setAttribute('webkit-playsinline', '');
-            
-            const startVideo = () => {
-                const playPromise = loaderVideo.play();
+        // Ensure jaguar video plays
+        if (loaderJaguar) {
+            loaderJaguar.muted = true;
+            loaderJaguar.playsInline = true;
+            loaderJaguar.setAttribute('playsinline', '');
+            loaderJaguar.setAttribute('webkit-playsinline', '');
+
+            const startJaguarVideo = () => {
+                const playPromise = loaderJaguar.play();
                 if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.log("Autoplay prevented, trying to play on first interaction.");
-                        // Fallback: try to play on first user interaction if blocked
-                        document.addEventListener('click', () => loaderVideo.play(), { once: true });
-                        document.addEventListener('touchstart', () => loaderVideo.play(), { once: true });
+                    playPromise.catch(() => {
+                        document.addEventListener('click', () => loaderJaguar.play(), { once: true });
+                        document.addEventListener('touchstart', () => loaderJaguar.play(), { once: true });
                     });
                 }
             };
 
-            // If metadata is already loaded, try to play
-            if (loaderVideo.readyState >= 1) {
-                startVideo();
-            } else {
-                loaderVideo.addEventListener('loadedmetadata', startVideo);
-            }
+            if (loaderJaguar.readyState >= 1) startJaguarVideo();
+            else loaderJaguar.addEventListener('loadedmetadata', startJaguarVideo);
         }
 
         let progress = 0;
@@ -60,7 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             // Update UI
-            loaderBar.style.width = `${progress}%`;
+            if (loaderJaguar) {
+                // Move in sync with progress. CSS transform handles the offset (being "behind").
+                loaderJaguar.style.left = `${progress}%`;
+            }
+            if (loaderBar) {
+                loaderBar.style.width = `${progress}%`;
+            }
             loaderPercentage.innerText = `${progress}%`;
             
         }, 100);
